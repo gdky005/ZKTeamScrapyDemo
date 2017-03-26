@@ -9,8 +9,6 @@ class Douban(CrawlSpider):
     start_urls = ['http://movie.douban.com/top250']
     # start_urls = ['http://www.6vhao.com/']
 
-
-
     def parse(self, response):
 
         selector = Selector(response)
@@ -44,9 +42,8 @@ class Douban(CrawlSpider):
             # print(start + "\n")
             # print("\n""\n""\n经常绝伦的言论： " + quote + "\n""\n""\n")
 
-            # item['title'] = full_title
             item['title'] = full_title
-            item['movieInfo'] = moviceInfos
+            item['movieInfo'] = moviceDetail
             item['star'] = start
             item['quote'] = quote
 
@@ -59,7 +56,7 @@ class Douban(CrawlSpider):
             nextLink = eachMovice.xpath('//span[@class="next"]/link/@href').extract()
             if nextLink:
                 nextLink = nextLink[0]
-                print(nextLink)
+                # print(nextLink)
                 url = "https://movie.douban.com/top250"
                 yield Request(url + nextLink, callback=self.parse)
 

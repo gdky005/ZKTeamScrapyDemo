@@ -13,7 +13,7 @@ BOT_NAME = 'DouBan'
 
 SPIDER_MODULES = ['DouBan.spiders']
 NEWSPIDER_MODULE = 'DouBan.spiders'
-ITEM_PIPELINES = ['DouBan.pipelines.DouBanPipeline']
+ITEM_PIPELINES = {'DouBan.pipelines.DouBanPipeline': 800, }
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
